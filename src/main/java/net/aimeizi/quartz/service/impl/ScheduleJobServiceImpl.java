@@ -121,8 +121,10 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
                 //这里一个任务可以有多个触发器， 但是我们一个任务对应一个触发器，所以只取第一个即可，清晰明了
                 Trigger trigger = triggers.iterator().next();
                 vo.setJobTrigger(trigger.getKey().getName());
-
+                vo.setPreviousFireTim(trigger.getPreviousFireTime());
+                vo.setNextFireTime(trigger.getNextFireTime());
                 Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
+
                 vo.setStatus(triggerState.name());
 
                 if (trigger instanceof CronTrigger) {

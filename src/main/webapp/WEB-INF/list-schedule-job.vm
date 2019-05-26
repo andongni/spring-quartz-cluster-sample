@@ -7,6 +7,8 @@
         <td>任务分组</td>
         <td>触发器</td>
         <td>任务状态</td>
+        <td>上一次执行时间</td>
+        <td>下一次执行时间</td>
         <td>时间表达式</td>
         <td>是否异步</td>
         <td>任务执行url</td>
@@ -24,7 +26,11 @@
             #else
                 <td>$!{item.status}</td>
             #end
+            <td>$!{item.previousFireTim}</td>
+            <td>$!{item.nextFireTime}</td>
+
             <td>$!{item.cronExpression}</td>
+
             <td>
             #if ($!{item.isSync})
                 异步
